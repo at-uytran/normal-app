@@ -6,19 +6,27 @@ git_source(:github) do |repo_name|
 end
 
 gem "rails", "~> 5.1.7"
-gem "sqlite3"
+gem "mysql2"
 gem "puma", "~> 3.7"
 gem "sass-rails", "~> 5.0"
 gem "uglifier", ">= 1.3.0"
-
+gem "warden"
 gem "coffee-rails", "~> 4.2"
 gem "turbolinks", "~> 5"
 gem "jbuilder", "~> 2.5"
-gem "redis", "~> 4.0"
+gem "redis", "~> 3.0"
 gem "bcrypt", "~> 3.1.7"
 gem "config"
 gem "rack-cors"
 gem "unicorn"
+gem "paranoia"
+gem "carrierwave"
+gem "sidekiq"
+gem "sidekiq-status"
+gem "carrierwave-video-thumbnailer"
+gem "ransack"
+gem "kaminari"
+gem "capistrano-sidekiq"
 
 group :development, :test do
   gem "pry"
@@ -34,7 +42,6 @@ group :development do
   gem "capistrano-rails"
   gem "capistrano3-unicorn"
   gem "capistrano-rvm"
-
   gem "web-console", ">= 3.3.0"
   gem "listen", ">= 3.0.5", "< 3.2"
   gem "spring"

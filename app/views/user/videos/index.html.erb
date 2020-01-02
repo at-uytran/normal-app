@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="col-md-8">
+    <script src="https://cdn.jwplayer.com/libraries/mX8w3yYs.js"></script>
+    <div id="myPlayer">This text will be replaced with a player.</div>
+    <script>
+      jwplayer("myPlayer").setup({
+        file: "http://videos.uytran.tk/hls/demo.m3u8",
+        height: "90%",
+        width: "100%"
+      });
+      function loadVideo(videoUrl) {
+        jwplayer("myPlayer").setup({
+          file: videoUrl,
+          height: "90%",
+          width: "100%"
+        })
+      }
+    </script>
+  </div>
+  <div class="col-md-4">
+    <section class="content">
+      <div class="card p-2">
+        <div class="card-header">
+          <h3 class="card-title">Recently Added Videos</h3>
+          <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+              <i class="fas fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+        <div class="card-body p-2">
+          <ul class="products-list product-list-in-card pl-2 pr-2">
+            <% @videos.each do |video| %>
+              <li class="item" click="loadVideo('<%= video.hls_playlist_file %>')">
+                <div class="product-img">
+                  <img src="<%= video.file_url(:thumb) %>" alt="<%= "Video thumb" %>" class="img-size-50">
+                </div>
+                <div class="product-info">
+                  <a href="javascript:void(0)" class="product-title"><%= video.name %>
+                    <span class="badge badge-warning float-right">$1800</span></a>
+                  <span class="product-description">
+                    <%= video.description %>
+                  </span>
+                </div>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
