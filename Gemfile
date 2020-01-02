@@ -21,6 +21,9 @@ gem "rack-cors"
 gem "unicorn"
 
 group :development, :test do
+  gem "pry"
+  gem "pry-byebug"
+  gem "pry-rails"
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
   gem "capybara", ">= 2.15"
   gem "selenium-webdriver"
