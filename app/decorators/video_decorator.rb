@@ -2,9 +2,11 @@ module VideoDecorator
   HLS_STORE_FOLDER = Settings.hls_store_folder
 
   def video_data
-    hls: {
-      link: hls_playlist_file,
-      thumb: thumb_url
+    {
+      hls: {
+        link: hls_playlist_file,
+        thumb: thumb_url
+      }
     }
   end
 
