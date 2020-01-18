@@ -8,13 +8,6 @@
         height: "90%",
         width: "100%"
       });
-      function loadVideo(videoUrl) {
-        jwplayer("myPlayer").setup({
-          file: videoUrl,
-          height: "90%",
-          width: "100%"
-        })
-      }
     </script>
   </div>
   <div class="col-md-4">
@@ -31,10 +24,10 @@
             </button>
           </div>
         </div>
-        <div class="card-body p-2">
+        <div class="card-body p-2" click="loadVideo('aaaa')">
           <ul class="products-list product-list-in-card pl-2 pr-2">
             <% @videos.each do |video| %>
-              <li class="item" click="loadVideo('<%= video.hls_playlist_file %>')">
+              <li class="item video-item" data-link="<%= video.hls_link %>">
                 <div class="product-img">
                   <img src="<%= video.file_url(:thumb) %>" alt="<%= "Video thumb" %>" class="img-size-50">
                 </div>
