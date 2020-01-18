@@ -1,0 +1,16 @@
+en:
+  activerecord:
+    errors: &errors
+      messages:
+        wrong_format: "%{attribute} is invalid."
+        blank: "%{attribute} can't be blank."
+    activemodel:
+      errors:
+        <<: *errors
+    activerecord:
+      errors:
+        <<: *errors
+  activemodel:
+    errors:
+      <<: *errors
+

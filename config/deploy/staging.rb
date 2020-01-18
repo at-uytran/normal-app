@@ -66,6 +66,9 @@ set :deploy_via, :remote_cache
 set :conditionally_migrate, true
 set :rails_env, "staging"
 set :branch, :develop
+set :sidekiq_processes, 1
 
-# Phần IP thì bạn thay thế cho phù hợp với IP của Docker container nhé
+set :linked_files, fetch(:linked_files, [])
+  .push("config/settings.local.yml")
+
 server "54.173.15.218", user: fetch(:user), port: fetch(:port), roles: %w(web app db)

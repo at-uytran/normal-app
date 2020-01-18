@@ -24,3 +24,12 @@ namespace :deploy do
     invoke "unicorn:restart"
   end
 end
+namespace :deploy do
+  task :add_default_hooks do
+    after 'deploy:starting', 'sidekiq:quiet'
+    after 'deploy:updated', 'sidekiq:stop'
+    after 'deploy:reverted', 'sidekiq:stop'
+    after 'deploy:published', 'sidekiq:start'
+  end
+end
+
