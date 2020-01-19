@@ -1,6 +1,6 @@
 $(document).ready(function() {
   $('.video-item').on('click', function(e) {
-    var link = $(e.target).data('link');
+    var link = $(e.target).closest('.video-item').data('link');
     loadVideo(link)
   })
   
