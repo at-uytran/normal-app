@@ -1,13 +1,15 @@
-class Mp4ToHlsConvertService
+class VideoToHlsConvertService
   def initialize original_file_path, file_name, store_folder
     @original_file_path = original_file_path
     @file_name = file_name
     @store_folder = store_folder
-    @result_file_name = @file_name.gsub("mp4", "m3u8")
+    file_extension = @file_name&.split(".")&.last
+    return if file_extension.blank?
+    @result_file_name = @file_name.gsub(file_extension, "m3u8")
   end
 
   def execute
-    puts "executing Mp4ToHlsConvertService"
+    puts "executing VideoToHlsConvertService"
     result_file_path = [@store_folder, @result_file_name].join("/")
     command_line = get_exec_command(@original_file_path, result_file_path)
     exec_command(command_line)
