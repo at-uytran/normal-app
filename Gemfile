@@ -27,6 +27,7 @@ gem "carrierwave-video-thumbnailer"
 gem "ransack"
 gem "kaminari"
 gem "capistrano-sidekiq"
+gem "dotenv-rails"
 
 group :development, :test do
   gem "pry"

@@ -21,6 +21,8 @@ class VideoToHlsConvertService
       "ffmpeg",
       "-i",
       original_file_path,
+      '-flags',
+      '-global_header',
       "-profile:v",
       "baseline",
       "-level",
