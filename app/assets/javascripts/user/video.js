@@ -11,4 +11,16 @@ $(document).ready(function() {
       width: "100%"
     });
   }
+
+  $.ajax({
+    url: "/get_m3u8",
+    type: "GET",
+    dataType: 'json',
+    success: function(response) {
+      console.log(response.data)
+    },
+    error: function(error){
+      console.log(error);
+    }
+  });
 })

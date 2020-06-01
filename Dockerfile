@@ -10,6 +10,8 @@ RUN yes | apt-get install ffmpegthumbnailer
 
 RUN mkdir -p /usr/src/app
 RUN mkdir -p /usr/src/app/hls-data
+RUN mkdir -p /usr/src/app/download_videos
+RUN mkdir -p /usr/src/app/stream_folder
 WORKDIR /usr/src/app
 
 COPY . /usr/src/app

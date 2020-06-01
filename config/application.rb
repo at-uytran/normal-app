@@ -16,11 +16,12 @@ module NormalApp
     config.time_zone = "Hanoi"
     config.generators.system_tests = nil
     config.eager_load_paths << Rails.root.join("lib")
+    config.active_job.queue_adapter = :shoryuken
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
-    config.active_job.queue_adapter = :sidekiq
+    # config.active_job.queue_adapter = :sidekiq
 
     Warden::Manager.serialize_into_session do |account|
       Application.set_account_into_session account

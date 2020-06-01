@@ -2,8 +2,6 @@ class VideoUploader < CarrierWave::Uploader::Base
   include CarrierWave::Video
   include CarrierWave::Video::Thumbnailer
 
-  storage :file
-
   def filename
     if original_filename
       formatted_name = original_filename.gsub(/[^0-9A-Za-z]/, '-').gsub(model.file.file.extension, "")

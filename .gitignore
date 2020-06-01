@@ -32,3 +32,7 @@ config/application.yml
 sidekiq-data/
 redis-data/
 hls-data/
+.env
+/cf_keys/*
+download_videos/*
+stream_folder/*
