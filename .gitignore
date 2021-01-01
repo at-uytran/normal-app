@@ -28,3 +28,11 @@ config/settings.local.yml
 config/settings/*.local.yml
 config/environments/*.local.yml
 config/application.yml
+
+sidekiq-data/
+redis-data/
+hls-data/
+.env
+/cf_keys/*
+download_videos/*
+stream_folder/*

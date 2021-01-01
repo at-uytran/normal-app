@@ -6,6 +6,7 @@ class CreateVideos < ActiveRecord::Migration[5.1]
       t.string :name
       t.string :description
       t.string :file
+      t.text :job_id
 
       t.timestamps
     end

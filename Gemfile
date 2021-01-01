@@ -27,6 +27,12 @@ gem "carrierwave-video-thumbnailer"
 gem "ransack"
 gem "kaminari"
 gem "capistrano-sidekiq"
+gem "dotenv-rails"
+gem "aws-sdk"
+gem "carrierwave-aws"
+gem "cloudfront-signer"
+gem "m3u8"
+gem "shoryuken"
 
 group :development, :test do
   gem "pry"

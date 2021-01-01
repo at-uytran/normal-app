@@ -7,6 +7,8 @@ Rails.application.routes.draw do
         get "sign_in", to: "sessions#new"
         post "sign_in", to: "sessions#create"
         resources :videos
+        get :download_video, to: "base#download_video"
+        get :get_m3u8, to: "base#get_m3u8"
       end
     end
   end
