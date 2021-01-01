@@ -10,7 +10,5 @@ CarrierWave.configure do |config|
     # config.aws_signer = ->unsigned_url, options do
     #   Aws::CF::Signer.sign_url unsigned_url.dup, options
     # end
-  else
-    storage :file
   end
 end

@@ -1,3 +1,6 @@
 regexp:
   email: !ruby/regexp /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/
   password: !ruby/regexp /^.*(?=.*\d)(?=.*[a-zA-Z]).*$|^[a-zA-Z0-9+\!"#$%&'()*+,-./:;<=>?@[¥]^_{|}]+$/
+aws_envs:
+  - development
+  - staging

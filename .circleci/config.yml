@@ -1,0 +1,68 @@
+version: 2.1
+orbs:
+  ruby: circleci/ruby@0.1.2 
+
+jobs:
+  # build:
+  #   docker:
+  #     - image: circleci/ruby:2.6.3-stretch-node
+  #   executor: ruby/default
+  #   environment:
+  #     RAILS_ENV: test
+  #   steps:
+  #     - checkout
+  #     - run:
+  #         name: Install bundler
+  #         command: gem install bundler -v 1.17.3
+  #     - run:
+  #         name: Which bundler?
+  #         command: bundle -v
+  #     - ruby/bundle-install
+  test:
+    docker:
+      - image: circleci/ruby:2.6.3-stretch-node
+      - image: mysql:5.7
+        environment:
+          MYSQL_ROOT_PASSWORD: toor
+          MYSQL_DATABASE: normal-app_test
+          MYSQL_PASSWORD: toor
+    environment:
+      MYSQL_USER_NAME: root
+      MYSQL_PASSWORD: toor
+      MYSQL_HOST: 127.0.0.1
+    steps:
+      - checkout
+      - run:
+          name: Database configuration
+          command: cp -r config/database.yml.example config/database.yml
+      - run:
+          name: Install bundler
+          command: gem install bundler -v 1.17.3
+      - run:
+          name: Which bundler?
+          command: bundle -v
+      - ruby/bundle-install
+      - run:
+          name: Wait for DB
+          command: dockerize -wait tcp://localhost:3306 -timeout 1m
+      - run:
+          name: Rspec
+          command: bundle exec rspec
+  deploy:
+    machine:
+      enabled: true
+    steps:
+      - run:
+          name: Deploy Over SSH
+          command: ssh uytv2@uytran.cf bash rebuild-api.sh
+workflows:
+  version: 2.1
+  build_and_test:
+    jobs:
+      # - build
+      - test
+          # requires:
+          #   - build
+      - deploy:
+          requires:
+            - test

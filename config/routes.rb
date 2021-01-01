@@ -6,6 +6,8 @@ Rails.application.routes.draw do
       scope module: :user, as: :user do
         get "sign_in", to: "sessions#new"
         post "sign_in", to: "sessions#create"
+        get "sign_up", to: "users#new"
+        resources :users, only: [:new]
         resources :videos
         get :download_video, to: "base#download_video"
         get :get_m3u8, to: "base#get_m3u8"
