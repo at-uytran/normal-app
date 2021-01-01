@@ -3,21 +3,21 @@ orbs:
   ruby: circleci/ruby@0.1.2 
 
 jobs:
-  # build:
-  #   docker:
-  #     - image: circleci/ruby:2.6.3-stretch-node
-  #   executor: ruby/default
-  #   environment:
-  #     RAILS_ENV: test
-  #   steps:
-  #     - checkout
-  #     - run:
-  #         name: Install bundler
-  #         command: gem install bundler -v 1.17.3
-  #     - run:
-  #         name: Which bundler?
-  #         command: bundle -v
-  #     - ruby/bundle-install
+  build:
+    docker:
+      - image: circleci/ruby:2.6.3-stretch-node
+    executor: ruby/default
+    environment:
+      RAILS_ENV: test
+    steps:
+      - checkout
+      - run:
+          name: Install bundler
+          command: gem install bundler -v 1.17.3
+      - run:
+          name: Which bundler?
+          command: bundle -v
+      - ruby/bundle-install
   test:
     docker:
       - image: circleci/ruby:2.6.3-stretch-node
@@ -59,10 +59,13 @@ workflows:
   version: 2.1
   build_and_test:
     jobs:
-      # - build
-      - test
-          # requires:
-          #   - build
+      - build
+      - test:
+          requires:
+            - build
       - deploy:
           requires:
             - test
+          filters:
+            branches:
+              only: develop
